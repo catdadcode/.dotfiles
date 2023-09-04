@@ -5,7 +5,7 @@ if [ -d "/mnt/c/Users/Alex" ] ; then
 	export DESKTOP=$WINHOME/Desktop
 	export DOWNLOADS=$WINHOME/Downloads
 	# If Google Drive is mounted then set some more path variables.
-	if [ -d "/mnt/g"] ; then
+	if [ -d "/mnt/g" ] ; then
 		export GDRIVE=/mnt/g/My\ Drive
 		export GBACKUPS=/mnt/g/My\ Drive/Backups
 	fi
@@ -46,6 +46,8 @@ fi
 if [ -f "$HOME/code/env" ] ; then
 	. "$HOME/code/env"
 fi
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export EDITOR="nvim"
 
