@@ -35,6 +35,9 @@ ln -s "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+# Add formulae taps.
+brew install jesseduffield/lazygit/lazygit
+
 # Update Homebrew
 brew update && brew upgrade
 
@@ -42,7 +45,7 @@ brew update && brew upgrade
 brew install zsh
 
 # Install remaining packages.
-brew install gcc fd neovim nvm ripgrep zsh 
+brew install fd gcc lazygit neovim nvm ripgrep zsh
 
 # Install Oh My ZSH!
 CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -63,10 +66,12 @@ nvm install node
 nvm alias default node
 npm install -g pnpm
 
+# Add ZSH to list of shells and set as default.
 ZSH_PATH=$(which zsh)
 if ! grep -q "$ZSH_PATH" /etc/shells; then
-    echo "$ZSH_PATH" | sudo tee -a /etc/shells
+	echo "$ZSH_PATH" | sudo tee -a /etc/shells
 fi
 sudo chsh -s "$ZSH_PATH" $USER
 
+# Initialize a new ZSH shell with our completed setup.
 exec zsh -l
