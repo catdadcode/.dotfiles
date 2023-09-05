@@ -1,41 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 # Get absolute path of current script.
 DOTFILES_DIR=$(pwd)
 
-# Upload 
-GITHUB_USERNAME=CatDadCode
-SSH_KEY=$HOME/.ssh/id_rsa
-
-if [ ! -f $SSH_KEY ] || [ ! -f $SSH_KEY.pub ]; then
-  echo 'Generate your ssh key first!'
-  exit
-fi
-
-github_result=0
-echo 'How do you want to name the key?'
-read -e KEY_NAME
-until [ $github_result -eq 1 ]; do
-  curl --silent -u "$GITHUB_USERNAME" --data "{\"title\":\"$KEY_NAME\",\"key\":\"$(cat $SSH_KEY.pub)\"}" https://api.github.com/user/keys > gh-result
-  if grep -q 'key is already in use' gh-result; then
-    github_result=1
-    echo 'Key is already in use.'
-  elif grep -q '"verified": true' gh-result; then
-    github_result=1
-    echo "Key ($KEY_NAME) has been added successfully."
-  elif grep -q 'Bad credentials' gh-result; then
-    echo 'Error during login: invalid username or password!'
-    echo 'Try again!'
-  else
-    echo 'A problem occured during the upload!'
-    cat gh-result
-    echo 'Try again!'
-  fi
-  rm gh-result
-done
-
 # Install prerequisites.
 # TODO: Adjust this to not run on OSX.
+sudo apt update && sudo apt upgrade -y
 sudo apt install build-essential -y
 
 # Ensure directories exist.
@@ -48,6 +18,7 @@ rm -rf "$HOME/.config/nvim"
 rm -rf "$HOME/.oh-my-zsh"
 rm -f "$HOME/.gitconfig"
 rm -f "$HOME/.p10k.zsh"
+rm -f "$HOME/.profile"
 rm -f "$HOME/.zprofile"
 rm -f "$HOME/.zshrc"
 
@@ -56,6 +27,7 @@ ln -s "$DOTFILES_DIR/.config/htop/htoprc" "$HOME/.config/htop/htoprc"
 ln -s "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 ln -s "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -s "$DOTFILES_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
+ln -s "$DOTFILES_DIR/.profile" "$HOME/.profile"
 ln -s "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
 ln -s "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 
@@ -73,14 +45,14 @@ brew install zsh
 brew install gcc fd neovim nvm ripgrep zsh 
 
 # Install Oh My ZSH!
-RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
-mkdir "$HOME/.oh-my-zsh/custom/themes"
+CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install improved VI Mode ZSH plugin.
+mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
 git clone https://github.com/jeffreytse/zsh-vi-mode ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-vi-mode
 
 # Install powerlevel10k ZSH theme.
+mkdir -p "$HOME/.oh-my-zsh/custom/themes"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Source NVM.
@@ -90,3 +62,11 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 nvm install node
 nvm alias default node
 npm install -g pnpm
+
+ZSH_PATH=$(which zsh)
+if ! grep -q "$ZSH_PATH" /etc/shells; then
+    echo "$ZSH_PATH" | sudo tee -a /etc/shells
+fi
+sudo chsh -s "$ZSH_PATH" $USER
+
+exec zsh -l
