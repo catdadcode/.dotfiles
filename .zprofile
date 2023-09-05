@@ -1,6 +1,6 @@
 # If we are in WSL then configure Windows path variables.
-if [ -d "/mnt/c/Users/Alex" ] ; then
-	export WINHOME=/mnt/c/Users/Alex
+if grep -qi microsoft /proc/version; then
+	export WINHOME=$(wslpath -u "$(powershell.exe '$env:Userprofile')")
 	export APPDATA=$WINHOME/AppData/Roaming
 	export DESKTOP=$WINHOME/Desktop
 	export DOWNLOADS=$WINHOME/Downloads
