@@ -4,11 +4,8 @@
 DOTFILES_DIR=$(pwd)
 
 # Install sudo if it doesn't already exist.
-if ! command -v sudo >/dev/null 2>&1; then
-	apt-get install sudo
-fi
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install build-essential procps curl file git -y
+sudo apt-get install build-essential procps curl file git zsh -y
 
 # Ensure directories exist.
 mkdir -p "$HOME/.config/htop"
@@ -30,6 +27,8 @@ ln -s "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 ln -s "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -s "$DOTFILES_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
 ln -s "$DOTFILES_DIR/.profile" "$HOME/.profile"
+ln -s "$DOTFILES_DIR/.profile" "$HOME/.bash_profile"
+ln -s "$DOTFILES_DIR/.profile" "$HOME/.bashrc"
 ln -s "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
 ln -s "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 
@@ -43,15 +42,13 @@ brew install jesseduffield/lazygit/lazygit
 # Update Homebrew
 brew update && brew upgrade
 
-# Install ZSH.
-brew install zsh
-
 # Install remaining packages.
 brew install fd ripgrep lazygit volta neovim
 
 # Install node and pnpm.
+export VOLTA_FEATURE_PNPM=1
 volta install node@latest
-volta install pnpm
+volta install pnpm@latest
 
 # Install Oh My ZSH!
 CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -71,5 +68,5 @@ if ! grep -q "$ZSH_PATH" /etc/shells; then
 fi
 sudo chsh -s "$ZSH_PATH" $USER
 
-# Initialize a new ZSH shell with our completed setup.
-exec zsh -l
+source "$HOME/.zprofile"
+source "$HOME/.zshrc"
