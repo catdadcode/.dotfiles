@@ -5,10 +5,10 @@ DOTFILES_DIR=$(pwd)
 
 # Install sudo if it doesn't already exist.
 if ! command -v sudo >/dev/null 2>&1; then
-	apt install sudo
+	apt-get install sudo
 fi
-sudo apt update && sudo apt upgrade -y
-sudo apt install build-essential procps curl file git -y
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install build-essential procps curl file git -y
 
 # Ensure directories exist.
 mkdir -p "$HOME/.config/htop"
