@@ -3,10 +3,12 @@
 # Get absolute path of current script.
 DOTFILES_DIR=$(pwd)
 
-# Install prerequisites.
-# TODO: Adjust this to not run on OSX.
+# Install sudo if it doesn't already exist.
+if ! command -v sudo >/dev/null 2>&1; then
+	apt install sudo
+fi
 sudo apt update && sudo apt upgrade -y
-sudo apt install build-essential -y
+sudo apt install build-essential procps curl file git -y
 
 # Ensure directories exist.
 mkdir -p "$HOME/.config/htop"
@@ -45,7 +47,11 @@ brew update && brew upgrade
 brew install zsh
 
 # Install remaining packages.
-brew install fd gcc lazygit neovim nvm ripgrep zsh
+brew install fd ripgrep lazygit volta neovim
+
+# Install node and pnpm.
+volta install node@latest
+volta install pnpm
 
 # Install Oh My ZSH!
 CHSH=no RUNZSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -57,14 +63,6 @@ git clone https://github.com/jeffreytse/zsh-vi-mode ${ZSH_CUSTOM:-$HOME/.oh-my-z
 # Install powerlevel10k ZSH theme.
 mkdir -p "$HOME/.oh-my-zsh/custom/themes"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-
-# Source NVM.
-. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"
-
-# Install Node
-nvm install node
-nvm alias default node
-npm install -g pnpm
 
 # Add ZSH to list of shells and set as default.
 ZSH_PATH=$(which zsh)

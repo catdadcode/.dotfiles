@@ -15,6 +15,9 @@ if grep -qi microsoft /proc/version; then
 	fi
 fi
 
+# Make Homebrew packages available.
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # If we are on Windows and have Neovide installed through scoop then add it to our PATH.
 if [ -d "$WINHOME/scoop/apps/neovide/current" ] ; then
 	PATH="$WINHOME/scoop/apps/neovide/current:$PATH"
@@ -46,12 +49,6 @@ fi
 if [ -f "$HOME/code/env" ] ; then
 	. "$HOME/code/env"
 fi
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export EDITOR="nvim"
 
