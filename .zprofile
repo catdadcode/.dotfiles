@@ -1,6 +1,6 @@
 # If we are in WSL then configure Windows path variables.
 # TODO: Find out why this still runs in Docker container.
-if grep -qi microsoft /proc/version; then
+if grep -qi microsoft /proc/version && [ ! -f /.dockerenv ]; then
 	export WINHOME=$(wslpath -u "$(powershell.exe '$env:Userprofile' | tr -d '\r')")
 	export APPDATA=$WINHOME/AppData/Roaming
 	export DESKTOP=$WINHOME/Desktop
