@@ -6,6 +6,7 @@ vim.opt.winbar = "%=%m %f"
 vim.opt.expandtab = false
 vim.opt.tabstop = 3
 vim.opt.shiftwidth = 3
+vim.wo.relativenumber = false
 
 if vim.g.neovide then
 	-- Enable this to see framerate.
@@ -21,7 +22,6 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_animation_length = 0.075
 	vim.g.neovide_hide_mouse_when_typing = true
 	vim.g.neovide_cursor_animate_command_line = true
-	vim.wo.relativenumber = false
 	vim.g.neovide_floating_blur_amount_x = 2.0
 	vim.g.neovide_floating_blur_amount_y = 2.0
 
