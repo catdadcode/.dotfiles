@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 WORKDIR /root
 
-RUN apt-get update && apt-get install --no-install-recommends sudo zsh apt-transport-https ca-certificates -y && apt-get clean && rm -rf /var/lib/apt/lists/* && update-ca-certificates
+RUN apt-get update && apt-get install --no-install-recommends sudo unzip zsh apt-transport-https ca-certificates -y && apt-get clean && rm -rf /var/lib/apt/lists/* && update-ca-certificates
 
 COPY . /root/.dotfiles
 

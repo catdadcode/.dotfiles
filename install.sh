@@ -43,7 +43,7 @@ brew install jesseduffield/lazygit/lazygit
 brew update && brew upgrade
 
 # Install remaining packages.
-brew install fd ripgrep lazygit volta neovim
+brew install fd ripgrep lazygit volta neovim bun
 
 # Install node and pnpm.
 export VOLTA_FEATURE_PNPM=1
