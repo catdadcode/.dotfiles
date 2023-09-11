@@ -12,18 +12,24 @@
    cd .dotfiles && install.sh
    ```
 
+   > Note that the install script does NOT automatically back up any existing configuration files.
+
 3. ???
 
 4. Profit!
 
-# ZSH Links
+## Try Before You Buy (with Docker)
+
+`docker run -it CatDadCode/CatDadDev:latest`
+
+## ZSH Links
 
 - [ZSH](https://www.zsh.org/)
 - [Oh My ZSH](https://ohmyz.sh/)
 - [Zsh Vi Mode](https://github.com/jeffreytse/zsh-vi-mode)
 - [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-# Neovim Links
+## Neovim Links
 
 - [Neovim](https://neovim.io/)
 - [Lazyvim](https://www.lazyvim.org/)
