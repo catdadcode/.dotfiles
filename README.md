@@ -20,7 +20,7 @@
 
 ## Try Before You Buy (with Docker)
 
-`docker run -it CatDadCode/catdaddev:latest`
+`docker run -it catdadcode/dotfiles`
 
 ## ZSH Links
 
