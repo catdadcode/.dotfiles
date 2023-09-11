@@ -37,7 +37,8 @@ NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Ho
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Add formulae taps.
-brew install jesseduffield/lazygit/lazygit
+brew tap jesseduffield/lazygit
+brew tap oven-sh/bun
 
 # Update Homebrew
 brew update && brew upgrade
