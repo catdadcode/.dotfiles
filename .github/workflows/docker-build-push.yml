@@ -21,5 +21,5 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/CatDadDev:latest .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/CatDadDev:latest
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/catdaddev:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/catdaddev:latest
