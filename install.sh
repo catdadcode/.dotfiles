@@ -5,7 +5,7 @@ DOTFILES_DIR=$(pwd)
 
 # Install sudo if it doesn't already exist.
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install build-essential procps curl file git zsh -y
+sudo apt-get install -y build-essential=12.9ubuntu3 procps=2:3.3.17-6ubuntu2 curl=7.81.0-1ubuntu1.13 file=1:5.41-3ubuntu0.1 git=1:2.34.1-1ubuntu1.10 zsh=5.8.1-1
 
 # Ensure directories exist.
 mkdir -p "$HOME/.config/htop"
@@ -68,6 +68,3 @@ if ! grep -q "$ZSH_PATH" /etc/shells; then
 	echo "$ZSH_PATH" | sudo tee -a /etc/shells
 fi
 sudo chsh -s "$ZSH_PATH" $USER
-
-# source "$HOME/.zprofile"
-# source "$HOME/.zshrc"
