@@ -69,5 +69,5 @@ if ! grep -q "$ZSH_PATH" /etc/shells; then
 fi
 sudo chsh -s "$ZSH_PATH" $USER
 
-source "$HOME/.zprofile"
-source "$HOME/.zshrc"
+# source "$HOME/.zprofile"
+# source "$HOME/.zshrc"
