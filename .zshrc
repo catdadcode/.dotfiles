@@ -120,4 +120,6 @@ alias vi="nvim"
 alias vim="nvim"
 alias nvide="neovide"
 alias nvd="neovide"
-alias alias_test="echo 'custom aliases have been sourced'"
+
+# bun completions
+[ -s "/home/catdad/.bun/_bun" ] && source "/home/catdad/.bun/_bun"
