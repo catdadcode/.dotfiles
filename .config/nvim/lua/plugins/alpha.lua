@@ -2,7 +2,7 @@ return {
 	"goolord/alpha-nvim",
 	opts = function(_, opts)
 		local function pickLogo()
-			local filepath = vim.fn.getcwd()
+			local filepath = vim.fn.getcwd() or ""
 			if string.match(filepath, "work") then
 				return [[
 	███████╗██╗   ██╗███╗   ██╗██████╗  ██████╗ ██╗    ██╗███████╗██████╗
