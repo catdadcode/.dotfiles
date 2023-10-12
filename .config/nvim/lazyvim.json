@@ -1,6 +1,7 @@
 {
   "extras": [
     "coding.codeium",
+    "coding.copilot",
     "coding.yanky",
     "dap.core",
     "dap.nlua",
