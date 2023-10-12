@@ -22,8 +22,8 @@ rm -f "$HOME/.zprofile"
 rm -f "$HOME/.zshrc"
 
 # Create symlinks.
-ln -s "$DOTFILES_DIR/.config/htop/htoprc" "$HOME/.config/htop/htoprc"
-ln -s "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
+ln -s "$DOTFILES_DIR/htop/htoprc" "$HOME/.config/htop/htoprc"
+ln -s "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 ln -s "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 ln -s "$DOTFILES_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
 ln -s "$DOTFILES_DIR/.profile" "$HOME/.profile"
