@@ -1,3 +1,14 @@
+-- return {
+-- 	"wfxr/minimap.vim",
+-- 	lazy = false,
+-- 	-- cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHightlight" },
+-- 	init = function()
+-- 		vim.cmd("let g:minimap_width = 10")
+-- 		vim.cmd("let g:minimap_auto_start = 1")
+-- 		vim.cmd("let g:minimap_auto_start_win_enter = 1")
+-- 		vim.cmd("let g:minimap_close_filetypes = ['dashboard']")
+-- 	end,
+-- },
 return {
 	"petertriho/nvim-scrollbar",
 	event = "BufReadPost",
@@ -18,12 +29,3 @@ return {
 		})
 	end,
 }
-
--- return {
--- 	"echasnovski/mini.map",
--- 	config = function()
--- 		local minimap = require("mini.map")
--- 		minimap.setup()
--- 		minimap.open()
--- 	end,
--- }
