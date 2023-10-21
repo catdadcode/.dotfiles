@@ -122,4 +122,4 @@ alias nvide="neovide"
 alias nvd="neovide"
 
 # bun completions
-[ -s "/home/catdad/.bun/_bun" ] && source "/home/catdad/.bun/_bun"
+# [ -s "/home/catdad/.bun/_bun" ] && source "/home/catdad/.bun/_bun"

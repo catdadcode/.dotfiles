@@ -1,10 +1,13 @@
 return {
-	"neovim/nvim-lspconfig",
-	opts = {
-		setup = {
-			clangd = function(_, opts)
-				opts.capabilities.offsetEncoding = { "utf-16" }
-			end,
+	-- Hack to encoding error with clangd.
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			setup = {
+				clangd = function(_, opts)
+					opts.capabilities.offsetEncoding = { "utf-16" }
+				end,
+			},
 		},
 	},
 }

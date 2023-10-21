@@ -54,6 +54,6 @@ fi
 export EDITOR="nvim"
 
 # Proxy
-export HTTP_PROXY=http://192.168.0.103:3128
-export HTTPS_PROXY=http://192.168.0.103:3128
-export NO_PROXY=127.0.0.1,localhost
+# export HTTP_PROXY=http://192.168.0.103:3128
+# export HTTPS_PROXY=http://192.168.0.103:3128
+# export NO_PROXY=127.0.0.1,localhost
