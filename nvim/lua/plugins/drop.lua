@@ -74,10 +74,24 @@ end
 return {
 	{
 		dir = "~/code/drop.nvim",
-		opts = {
-			theme = pickTheme(),
-			filetypes = { "dashboard" },
-			screensaver = 1000 * 60 * 10,
-		},
+		opts = function(_, opts)
+			opts.theme = pickTheme()
+			opts.holidays = {
+				halloween = {
+					start_date = { month = 10, day = 1 },
+					end_date = { month = 10, day = 31 },
+				},
+				us_thanksgiving = {
+					start_date = { month = 11, day = 1 },
+					end_date = require("drop").calculate_us_thanksgiving(os.date("%Y")),
+				},
+				xmas = {
+					start_date = { month = 12, day = 1 },
+					end_date = { month = 12, day = 25 },
+				},
+			}
+			opts.filetypes = { "dashboard" }
+			opts.screensaver = 1000 * 60 * 10
+		end,
 	},
 }
