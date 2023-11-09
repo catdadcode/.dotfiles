@@ -51,9 +51,12 @@ if [ -f "$HOME/code/env" ] ; then
 	. "$HOME/code/env"
 fi
 
+# Set SSL certificates directory for OpenSSL.
+export SSL_CERT_DIR=/etc/ssl/certs
+
 export EDITOR="nvim"
 
 # Proxy
-export HTTP_PROXY=http://192.168.0.103:3128
-export HTTPS_PROXY=http://192.168.0.103:3128
-export NO_PROXY=127.0.0.1,localhost
+# export HTTP_PROXY=http://192.168.0.103:3128
+# export HTTPS_PROXY=http://192.168.0.103:3128
+# export NO_PROXY=127.0.0.1,localhost

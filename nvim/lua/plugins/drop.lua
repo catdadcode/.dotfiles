@@ -78,7 +78,8 @@ return {
 					end_date = { month = 12, day = 25 },
 				},
 			}
-			opts.filetypes = { "dashboard" }
+			opts.filetypes = {}
+			-- opts.filetypes = { "dashboard" }
 			opts.screensaver = 1000 * 60 * 10
 		end,
 	},
