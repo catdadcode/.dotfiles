@@ -44,7 +44,7 @@ brew tap oven-sh/bun
 brew update && brew upgrade
 
 # Install remaining packages.
-brew install fd ripgrep lazygit volta neovim bun lua
+brew install fd ripgrep lazygit volta neovim bun lua python rust
 
 # Install node and pnpm.
 export VOLTA_FEATURE_PNPM=1
