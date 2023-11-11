@@ -39,12 +39,13 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Add formulae taps.
 brew tap jesseduffield/lazygit
 brew tap oven-sh/bun
+brew tap wez/wezterm-linuxbrew
 
 # Update Homebrew
 brew update && brew upgrade
 
 # Install remaining packages.
-brew install fd ripgrep lazygit volta neovim bun lua python rust
+brew install fd ripgrep lazygit volta neovim bun lua python rust wezterm
 
 # Install node and pnpm.
 export VOLTA_FEATURE_PNPM=1
