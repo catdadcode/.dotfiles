@@ -39,12 +39,12 @@ return {
 	-- 		style = "moon",
 	-- 	},
 	-- },
-	-- {
-	-- 	"ellisonleao/gruvbox.nvim",
-	-- 	opts = {
-	-- 		contrast = "hard",
-	-- 	},
-	-- },
+	{
+		"ellisonleao/gruvbox.nvim",
+		opts = {
+			contrast = "hard",
+		},
+	},
 	-- { "water-sucks/darkrose.nvim" },
 	-- { "xero/miasma.nvim" },
 	-- { "luisiacc/the-matrix.nvim" },
@@ -53,13 +53,13 @@ return {
 	-- { "nikolvs/vim-sunbather" },
 	-- { "Alexis12119/nightly.nvim" },
 	-- { "muchzill4/doubletrouble" },
-	{ "gremble0/yellowbeans.nvim" },
+	-- { "gremble0/yellowbeans.nvim" },
 
 	-- Configure LazyVim to load gruvbox.
 	{
 		"LazyVim/LazyVim",
 		opts = {
-			colorscheme = "yellowbeans",
+			colorscheme = "gruvbox",
 		},
 	},
 }
