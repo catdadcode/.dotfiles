@@ -101,11 +101,9 @@ bindkey -v
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Custom function to launch neovide in Windows in the background.
-function neovide() {
-	neovide.exe "$@" &
+function chpwd {
+    echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $(basename $(pwd)) | base64)\x07"
 }
-
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -120,6 +118,3 @@ alias vi="nvim"
 alias vim="nvim"
 alias nvide="neovide"
 alias nvd="neovide"
-
-# bun completions
-# [ -s "/home/catdad/.bun/_bun" ] && source "/home/catdad/.bun/_bun"
