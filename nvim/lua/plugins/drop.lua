@@ -71,7 +71,7 @@ return {
 					end_date = { month = 10, day = 31 },
 				},
 				us_thanksgiving = {
-					start_date = { month = 11, day = 1 },
+					start_date = { month = 11, day = 10 },
 					end_date = thanksgiving_day,
 				},
 				xmas = {
