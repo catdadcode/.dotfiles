@@ -63,6 +63,7 @@ return {
 	{
 		"catdadcode/drop.nvim",
 		opts = function(_, opts)
+			local thanksgiving_day = require("drop").calculate_us_thanksgiving(os.date("%Y"))
 			opts.theme = pickTheme()
 			opts.holidays = {
 				halloween = {
@@ -71,7 +72,7 @@ return {
 				},
 				us_thanksgiving = {
 					start_date = { month = 11, day = 1 },
-					end_date = require("drop").calculate_us_thanksgiving(os.date("%Y")),
+					end_date = thanksgiving_day,
 				},
 				xmas = {
 					start_date = { month = 12, day = 1 },
